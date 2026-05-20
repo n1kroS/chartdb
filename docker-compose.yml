@@ -1,0 +1,20 @@
+name: aridb
+
+services:
+    aridb-front:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        container_name: aridb-front
+        ports:
+            - "5173:5173"
+        volumes:
+            - .:/usr/src/app
+            - aridb-front-node-modules:/usr/src/app/node_modules
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        stdin_open: true
+        tty: true
+
+volumes:
+    aridb-front-node-modules:
